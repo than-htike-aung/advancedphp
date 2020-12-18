@@ -3,6 +3,7 @@
 
 namespace App\controllers;
 
+use App\classes\Request;
 
 class CategoryController extends BaseController
 {
@@ -11,6 +12,15 @@ class CategoryController extends BaseController
     }
 
     public function store(){
-       beautify($_POST);
+      // beautify(Request::all());
+     // beautify(Request::all(true));
+  //   beautify(Request::get("post"));
+
+      // var_dump(Request::has("get"));
+        //beautify(Request::has("get"));
+
+        beautify(Request::old("post", "name"));
+
+
     }
 }
