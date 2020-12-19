@@ -2,9 +2,17 @@
 
 use App\classes\Mail;
 use App\classes\Session;
+use App\classes\ValidateRequest;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 require_once "../bootstrap/init.php";
+
+$validator = new ValidateRequest();
+//$con = $validator->unique("name", "tester5", "users");
+//$con = $validator->required("name", "", "users");
+$con = $validator->minLength("email", "a", "6");
+var_dump($con);
+
 
 //Session::add("name", "Tester");
 

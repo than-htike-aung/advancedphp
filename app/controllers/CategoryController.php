@@ -7,6 +7,7 @@ use App\classes\CSRFToken;
 use App\classes\Redirect;
 use App\classes\Request;
 use App\classes\Session;
+use App\classes\UploadFile;
 
 class CategoryController extends BaseController
 {
@@ -24,7 +25,10 @@ class CategoryController extends BaseController
         //beautify(Request::has("get"));
     $post = Request::get("post");
       if(CSRFToken::checkToken($post->token)){
-          echo "Authenticated token";
+          beautify(Request::get("file"));
+          echo "<hr>";
+          $uploadFile = new UploadFile();
+          var_dump($uploadFile->move(Request::get("file")));
       }else{
           Session::flash("error", "CSRF field error!");
           Redirect::back();
