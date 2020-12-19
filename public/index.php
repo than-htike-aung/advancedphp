@@ -1,11 +1,25 @@
 <?php
 
 use App\classes\Mail;
+use App\classes\Session;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 require_once "../bootstrap/init.php";
 
+//Session::add("name", "Tester");
 
+//Session::remove("token");
+
+//echo $_SESSION["name"];
+
+// var_dump(Session::get("name"));
+
+//Session::replace("name", "tester3");
+//echo Session::get("name");
+
+//Session::flash("create_success", "category created successfully");
+
+//Session::flash("create_success");
 /*
 $mailer = new Mail();
 

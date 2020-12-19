@@ -8,6 +8,11 @@
 
 <div class="container my-5">
     <h1 class="text-primary text-center">Create Category</h1>
+
+    @if(\App\classes\Session::has("error"))
+        {{\App\classes\Session::flash("error")}}
+    @endif
+
     <div class="col-md-8 offset-md-2">
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
@@ -20,6 +25,8 @@
                 <label for="file" class="form-label">Category Name</label>
                 <input type="file" class="form-control rounded-0" id="file" name="file" >
               </div>
+
+              <input type="hidden" name="token" value="{{\App\classes\CSRFToken::__token()}}">
             <div class="row justify-content-end no-gutters mt-3">
                 <button type="submit" class="btn btn-primary btn-sm">Create</button>
             </div>
@@ -30,5 +37,4 @@
 </div>
 
 @endsection
-   
    
