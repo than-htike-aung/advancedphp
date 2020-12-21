@@ -7,11 +7,32 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 require_once "../bootstrap/init.php";
 
-$validator = new ValidateRequest();
+
 //$con = $validator->unique("name", "tester5", "users");
 //$con = $validator->required("name", "", "users");
-$con = $validator->minLength("email", "a", "6");
-var_dump($con);
+//$con = $validator->minLength("email", "a", "6");
+//$con = $validator->mixed("email", "aa@gmail.`com", "5");
+//var_dump($con);
+
+// $post = [
+//     "name" => "Mg 212@ Mg",
+//     "age" =>20,
+//     "email" => "tester@gmail.com"
+// ];
+
+// $policy = [
+//     "name" => ["string" => true, "minLength" => "5"],
+//     "email" => ["email" =>true, "maxLength" => "25"],
+//     "age" => ["number" => true, "minLength" => "2"]
+// ];
+// $validator = new ValidateRequest();
+// $validator->checkValidate($post, $policy);
+
+// if($validator->hasError()){
+//     beautify($validator->getErrors());
+// }else{
+//     echo "Good to go!";
+// }
 
 
 //Session::add("name", "Tester");

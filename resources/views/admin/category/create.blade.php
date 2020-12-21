@@ -9,22 +9,21 @@
 <div class="container my-5">
     <h1 class="text-primary text-center">Create Category</h1>
 
-    @if(\App\classes\Session::has("error"))
+    {{-- @if(\App\classes\Session::has("error"))
         {{\App\classes\Session::flash("error")}}
-    @endif
+    @endif --}}
 
-    <div class="col-md-8 offset-md-2">
+<div class="row">
+    <div class="col-md-4">
+        @include("layout.admin_sidebar")
+    </div>
+    <div class="col-md-8">
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="name" class="form-label">Category Name</label>
               <input type="text" class="form-control rounded-0" id="name" name="name" >
             </div>
-
-            <div class="form-group">
-                <label for="file" class="form-label">Category Name</label>
-                <input type="file" class="form-control rounded-0" id="file" name="file" >
-              </div>
 
               <input type="hidden" name="token" value="{{\App\classes\CSRFToken::__token()}}">
             <div class="row justify-content-end no-gutters mt-3">
@@ -33,7 +32,22 @@
         
         </form>
          <!-- Form end -->
+         <ul class="list-group mt-5">
+           @foreach($cats as $cat)
+                <li class="list-group-item rounded-0">
+                        <a href="/admin/category/all">{{ $cat->name }}</a>  
+                        <span class="float-right">
+                            <i class="fa fa-edit text-warning"></i>
+                            <i class="fa fa-trash text-danger"></i>    
+                        </span>  
+                 </li>
+           @endforeach
+            
+          
+          </ul>
     </div>
+</div>
+
 </div>
 
 @endsection

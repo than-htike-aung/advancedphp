@@ -8,12 +8,15 @@ use App\classes\Redirect;
 use App\classes\Request;
 use App\classes\Session;
 use App\classes\UploadFile;
+use App\Models\Category;
 
 class CategoryController extends BaseController
 {
     public function index(){
      //   Redirect::to("/");
-       view("admin/category/create");
+     $cats = Category::all();
+    // beautify($cats);
+      view("admin/category/create", compact('cats'));
     }
 
     public function store(){
@@ -25,10 +28,11 @@ class CategoryController extends BaseController
         //beautify(Request::has("get"));
     $post = Request::get("post");
       if(CSRFToken::checkToken($post->token)){
-          beautify(Request::get("file"));
-          echo "<hr>";
-          $uploadFile = new UploadFile();
-          var_dump($uploadFile->move(Request::get("file")));
+        
+         // beautify(Request::all());
+         // echo "<hr>";
+         // $uploadFile = new UploadFile();
+         // var_dump($uploadFile->move(Request::get("file")));
       }else{
           Session::flash("error", "CSRF field error!");
           Redirect::back();

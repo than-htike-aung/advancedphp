@@ -40,7 +40,7 @@ class UploadFile
        $name =  $this->getName($file);
         if($this->isImage($file)){
             if(!$this->checkSize($file)){
-                $path = APP_ROOT . "/public/assets/uploads";
+                $path = APP_ROOT . "/public/assets/uploads/";
                 if(!is_dir($path)){
                      mkdir($path);
                 } 
@@ -50,7 +50,7 @@ class UploadFile
                 return "File size exceeded";
             }
         }else{
-            return  "Online image file are accpted";
+            return  "Only image file are accepted";
         }
 
     
