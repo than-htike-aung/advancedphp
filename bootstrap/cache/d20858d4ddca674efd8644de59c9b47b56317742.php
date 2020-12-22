@@ -11,11 +11,26 @@
 
     
 
+
+
 <div class="row">
+
+
+
+        <?php if(isset($errors)): ?>
+
+                    <?php $__currentLoopData = $errors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php echo e($error); ?>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+        <?php endif; ?>
+
     <div class="col-md-4">
         <?php echo $__env->make("layout.admin_sidebar", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     </div>
     <div class="col-md-8">
+            <?php echo $__env->make("layout.report_message", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
             <div class="form-group">

@@ -31,5 +31,11 @@ function asset($link){
     echo URL_ROOT .'/assets/'. $link;
 }
 
+function slug($value){
+    $value = preg_replace('/[^'.preg_quote('_').'\pL\pN\s]+/u',"", mb_strtolower($value));
+    $value = preg_replace('/['.preg_quote('-').'\s]/','-', $value);
+    return $value;
+}
+
 
 

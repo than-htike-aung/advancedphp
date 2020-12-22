@@ -54,7 +54,7 @@ class ValidateRequest{
 
      public function unique($column, $value, $policy){
             if($value != null && !empty($value)){
-             return  Capsule::table($policy)->where($column, $value)->exists();
+             return  !Capsule::table($policy)->where($column, $value)->exists();
             }
      }
 
@@ -102,7 +102,7 @@ class ValidateRequest{
 
     public function setError($error, $key=null){
         if($key){
-            $this->errros[$key] = $error;
+            $this->errors[$key] = $error;
         }else{
             $this->errors[] = $error;
         }

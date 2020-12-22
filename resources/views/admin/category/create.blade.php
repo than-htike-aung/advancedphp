@@ -13,11 +13,25 @@
         {{\App\classes\Session::flash("error")}}
     @endif --}}
 
+
+
 <div class="row">
+
+
+
+        @if (isset($errors))
+
+                    @foreach ($errors as $error)
+                            {{$error}}
+                    @endforeach
+
+        @endif
+
     <div class="col-md-4">
         @include("layout.admin_sidebar")
     </div>
     <div class="col-md-8">
+            @include("layout.report_message")
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
             <div class="form-group">

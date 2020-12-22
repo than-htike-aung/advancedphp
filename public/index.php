@@ -7,6 +7,9 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 require_once "../bootstrap/init.php";
 
+//$orig = "Local@@ Electronic";
+//$vari = "local-electronic";
+//echo slug($orig);
 
 //$con = $validator->unique("name", "tester5", "users");
 //$con = $validator->required("name", "", "users");
