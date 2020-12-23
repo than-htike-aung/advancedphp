@@ -45,18 +45,29 @@ class CategoryController extends BaseController
         }else{
           $slug =  slug($post->name);
 
-          $category = new Category();
-          $category->name = $post->name;
-          $category->slug = $slug;
-
-          if($category->save()){
-              echo "Category created successfully";
-          }else{
-              echo "Category creation fail";
-          }
+//          $category = new Category();
+//          $category->name = $post->name;
+//          $category->slug = $slug;
+//
+//          if($category->save()){
+//              echo "Category created successfully";
+//          }else{
+//              echo "Category creation fail";
+//          }
 
             //  OR
 
+            $con = Category::create([
+               "name" => $post->name,
+               "slug" => $slug
+            ]);
+            if($con){
+                $cats = Category::all();
+                $success = "Category created successfully!";
+                view("admin/category/create", compact('cats','success'));
+            }else{
+                echo "fail";
+            }
 
 
         }
@@ -71,5 +82,16 @@ class CategoryController extends BaseController
       }
 
 
+    }
+
+    public function delete ($id){
+        $con = Category::destroy($id);
+        if($con){
+            Session::flash("delete_success", "Category Delete Successfully!");
+            Redirect::to("/admin/category/create");
+        }else{
+            Session::flash("delete_fail", "Category delete fail");
+            Redirect::to("/admin/category/create");
+        }
     }
 }

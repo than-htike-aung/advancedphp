@@ -9,7 +9,7 @@
 <div class="container my-5">
     <h1 class="text-primary text-center">Create Category</h1>
 
-    
+
 
 
 
@@ -17,20 +17,30 @@
 
 
 
-        <?php if(isset($errors)): ?>
 
-                    <?php $__currentLoopData = $errors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php echo e($error); ?>
 
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-        <?php endif; ?>
+
+
+
+
 
     <div class="col-md-4">
         <?php echo $__env->make("layout.admin_sidebar", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     </div>
     <div class="col-md-8">
             <?php echo $__env->make("layout.report_message", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+             <?php if(\App\classes\Session::has("delete_success")): ?>
+                     <?php echo e(\App\classes\Session::flash("delete_success")); ?>
+
+
+            <?php endif; ?>
+            <?php if(\App\classes\Session::has("delete_fail")): ?>
+                <?php echo e(\App\classes\Session::flash("delete_fail")); ?>
+
+
+            <?php endif; ?>
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -51,7 +61,10 @@
                         <a href="/admin/category/all"><?php echo e($cat->name); ?></a>  
                         <span class="float-right">
                             <i class="fa fa-edit text-warning"></i>
-                            <i class="fa fa-trash text-danger"></i>    
+                              <a href="/admin/category/<?php echo e($cat->id); ?>/delete">
+                                  <i class="fa fa-trash text-danger"></i>
+                              </a>
+
                         </span>  
                  </li>
            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

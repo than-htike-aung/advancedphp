@@ -9,9 +9,7 @@
 <div class="container my-5">
     <h1 class="text-primary text-center">Create Category</h1>
 
-    {{-- @if(\App\classes\Session::has("error"))
-        {{\App\classes\Session::flash("error")}}
-    @endif --}}
+
 
 
 
@@ -19,19 +17,28 @@
 
 
 
-        @if (isset($errors))
+{{--        @if (isset($errors))--}}
 
-                    @foreach ($errors as $error)
-                            {{$error}}
-                    @endforeach
+{{--                    @foreach ($errors as $error)--}}
+{{--                            {{$error}}--}}
+{{--                    @endforeach--}}
 
-        @endif
+{{--        @endif--}}
 
     <div class="col-md-4">
         @include("layout.admin_sidebar")
     </div>
     <div class="col-md-8">
             @include("layout.report_message")
+
+             @if(\App\classes\Session::has("delete_success"))
+                     {{\App\classes\Session::flash("delete_success")}}
+
+            @endif
+            @if(\App\classes\Session::has("delete_fail"))
+                {{\App\classes\Session::flash("delete_fail")}}
+
+            @endif
         <!-- Form start -->
         <form action="/admin/category/create" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -52,7 +59,10 @@
                         <a href="/admin/category/all">{{ $cat->name }}</a>  
                         <span class="float-right">
                             <i class="fa fa-edit text-warning"></i>
-                            <i class="fa fa-trash text-danger"></i>    
+                              <a href="/admin/category/{{$cat->id}}/delete">
+                                  <i class="fa fa-trash text-danger"></i>
+                              </a>
+
                         </span>  
                  </li>
            @endforeach

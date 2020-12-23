@@ -33,7 +33,7 @@ function asset($link){
 
 function slug($value){
     $value = preg_replace('/[^'.preg_quote('_').'\pL\pN\s]+/u',"", mb_strtolower($value));
-    $value = preg_replace('/['.preg_quote('-').'\s]/','-', $value);
+    $value = preg_replace('/[ _]+/u','-', $value);
     return $value;
 }
 
