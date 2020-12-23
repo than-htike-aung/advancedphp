@@ -15,9 +15,11 @@ class CategoryController extends BaseController
 {
     public function index(){
      //   Redirect::to("/");
-     $cats = Category::all();
+     $categories = Category::all()->count();
+     list($cats, $pages) = paginate(3,$categories, new Category());
+        $cats = json_decode(json_encode($cats)); // changing ary to object
     // beautify($cats);
-        view("admin/category/create", compact('cats'));
+        view("admin/category/create", compact('cats', 'pages'));
     }
 
     public function store(){
@@ -39,6 +41,7 @@ class CategoryController extends BaseController
          // beautify($validator->getErrors());
             $cats = Category::all();
             $errors = $validator->getErrors();
+          
            // beautify($errors);
           view("admin/category/create",compact('cats','errors'));
 

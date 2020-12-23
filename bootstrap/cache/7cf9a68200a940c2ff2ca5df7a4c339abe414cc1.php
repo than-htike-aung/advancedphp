@@ -17,5 +17,6 @@
 
   
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <?php echo $__env->yieldContent('script'); ?>
 </body>
 </html>

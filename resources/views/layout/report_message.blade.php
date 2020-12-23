@@ -1,7 +1,7 @@
 @if(isset($errors))
     @foreach($errors as $error)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{$error}}</strong>
+            <strong>{{ $error }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endforeach
