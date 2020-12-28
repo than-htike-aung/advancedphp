@@ -8,7 +8,9 @@ class UploadFile
 
 {
     
-    protected $maxSize = 5402;
+    protected $maxSize = 5402000;
+    protected $path;
+
 
     public function getName($file, $name = ""){
         if($name === ""){
@@ -28,12 +30,15 @@ class UploadFile
     }
 
     public function isImage($file){
-        $ext = pathinfo($file->file->name, PATHINFO_FILENAME);
+        $ext = pathinfo($file->file->name, PATHINFO_EXTENSION);
         $validExt = ["jpg", "jpeg", "png", "bmp", "gif"];
 
         return in_array($ext, $validExt);
     }
 
+    public function getPath(){
+        return $this->path;
+    }
 
 
     public function move($file, $filename= ""){
@@ -44,13 +49,16 @@ class UploadFile
                 if(!is_dir($path)){
                      mkdir($path);
                 } 
+                $this->path = URL_ROOT . "public/assets/uploads/" . $name;
                 $file_path = $path . $name;
                 return move_uploaded_file($file->file->tmp_name, $file_path);
             }else{
-                return "File size exceeded";
+                //return "File size exceeded";
+                return false;
             }
         }else{
-            return  "Only image file are accepted";
+           // return  "Only image file are accepted";
+           return false;
         }
 
     

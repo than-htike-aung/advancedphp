@@ -5,7 +5,7 @@ use App\classes\Database;
 if(!isset($_SESSION)) session_start();
 
 define("APP_ROOT",realpath(__DIR__."/../"));
-define("URL_ROOT", "http://advancedphp.cc");
+define("URL_ROOT", "http://advancedphp.cc/");
 
 require_once APP_ROOT . "/vendor/autoload.php";
 

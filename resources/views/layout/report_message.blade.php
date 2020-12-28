@@ -4,8 +4,11 @@
             <strong>{{ $error }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+
     @endforeach
+
     @endif
+
 
 @if(isset($success))
 
@@ -15,3 +18,4 @@
         </div>
 
 @endif
+

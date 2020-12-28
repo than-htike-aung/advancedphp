@@ -4,8 +4,11 @@
             <strong><?php echo e($error); ?></strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
     <?php endif; ?>
+
 
 <?php if(isset($success)): ?>
 
@@ -15,3 +18,4 @@
         </div>
 
 <?php endif; ?>
+
