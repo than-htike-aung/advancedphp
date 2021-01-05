@@ -1,32 +1,30 @@
-@extends("layout.master")
+<?php $__env->startSection("title", "Product Edit Page"); ?>
 
-@section("title", "Product Edit Page")
-
-@section("content")
+<?php $__env->startSection("content"); ?>
 
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4">
-            @include("layout.admin_sidebar")
+            <?php echo $__env->make("layout.admin_sidebar", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
         <div class="col-md-8">
-            @include("layout.report_message")
+            <?php echo $__env->make("layout.report_message", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             <!--Form Start-->
 
-            <form action="/admin/product/{{ $product->id }}/edit" method="POST" enctype="multipart/form-data" class="table-bordered pb-5 px-5">
+            <form action="/admin/product/<?php echo e($product->id); ?>/edit" method="POST" enctype="multipart/form-data" class="table-bordered pb-5 px-5">
                 <h3 class="text-center english my-5 text-info">Create Product</h3>
                <div class="row">
                    <div class="col-md-6">
                        <div class="form-group">
                            <label for="name" class="form-label"> Name</label>
-                           <input type="text" class="form-control rounded-0" id="name" name="name" value="{{ $product->name }}" >
+                           <input type="text" class="form-control rounded-0" id="name" name="name" value="<?php echo e($product->name); ?>" >
                        </div>
                    </div>
                    <div class="col-md-6">
                        <div class="form-group">
                            <label for="name" class="form-label">Price</label>
-                           <input type="number" step="any" class="form-control rounded-0" id="price" name="price" value="{{ $product->price }}" >
+                           <input type="number" step="any" class="form-control rounded-0" id="price" name="price" value="<?php echo e($product->price); ?>" >
                        </div>
                    </div>
                </div>
@@ -36,11 +34,11 @@
                         <div class="form-group">
                             <label for="cat_id">Category</label>
                             <select class="form-control" name="cat_id" id="cat_id">
-                              @foreach($cats as $cat)
-                                    <option value="{{$cat->id}}"
+                              <?php $__currentLoopData = $cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($cat->id); ?>"
                                 <?php echo $cat->id == $product->cat_id ? 'selected' : '' ?>
-                                        >{{$cat->name}}</option>
-                                @endforeach
+                                        ><?php echo e($cat->name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </select>
                         </div>
@@ -49,11 +47,11 @@
                         <div class="form-group">
                             <label for="sub_cat_id">Sub Category</label>
                             <select class="form-control" name="sub_cat_id" id="sub_cat_id">
-                                @foreach($sub_cats as $cat)
-                                    <option value="{{$cat->id}}"
+                                <?php $__currentLoopData = $sub_cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($cat->id); ?>"
                                     <?php echo $cat->id == $product->sub_cat_id ? 'selected' : '' ?>
-                                        >{{$cat->name}}</option>
-                                @endforeach
+                                        ><?php echo e($cat->name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                         </div>
                     </div>
@@ -65,17 +63,18 @@
 
                 </div>
 
-                <input type="hidden" name="old_image" value="{{ $product->image }}">
+                <input type="hidden" name="old_image" value="<?php echo e($product->image); ?>">
 
                 <div class="form-group">
                     <label for="description" class="form-label">Description</label>
                     <textarea name="description" class="form-control" id="description" cols="30" rows="5">
-                        {{ $product->description }}
+                        <?php echo e($product->description); ?>
+
                     </textarea>
                 </div>
 
 
-                <input type="hidden" name="token" value="{{\App\classes\CSRFToken::__token()}}">
+                <input type="hidden" name="token" value="<?php echo e(\App\classes\CSRFToken::__token()); ?>">
 
                 <div class="row justify-content-end no-gutters">
                     <button type="reset" class="btn btn-outline-secondary btn-sm">Cancel</button>
@@ -89,6 +88,8 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make("layout.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -7,6 +7,9 @@ $router = new AltoRouter();
 //4 params => method, router, target, routename
 $router ->setBasePath(getenv("BASE_PATH"));
 $router->map("GET", "/", "App\Controllers\IndexController@show", "Home Route");
+$router->map('POST', '/cart', 'App\Controllers\IndexController@cart', "Cart Route");
+$router->map('GET', '/cart', 'App\Controllers\IndexController@showCart', "Show Cart Route");
+$router->map("POST", "/payout", "App\Controllers\IndexController@payout", "Show payout");
 
 //Admin Route
 $router->map('GET', '/admin', 'App\Controllers\AdminController@index','Admin Home');
@@ -22,6 +25,9 @@ $router->map('GET', '/admin/subcategory/[i:id]/delete', 'App\Controllers\SubCate
 $router->map('GET', '/admin/product/home', 'App\Controllers\ProductController@home','Home');
 $router->map('GET', '/admin/product/create', 'App\Controllers\ProductController@create','Product Create');
 $router->map('POST', '/admin/product/create', 'App\Controllers\ProductController@store','Product Store');
+$router->map('GET', '/admin/product/[i:id]/edit', 'App\Controllers\ProductController@edit','Product Edit');
+$router->map('POST', '/admin/product/[i:id]/edit', 'App\Controllers\ProductController@update','Product Update');
+$router->map('GET', '/admin/product/[i:id]/delete', 'App\Controllers\ProductController@delete', 'Product Delete');
 
 new RouteDispatcher($router);
 

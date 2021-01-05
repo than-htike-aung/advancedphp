@@ -25,7 +25,7 @@ class CategoryController extends BaseController
      $cats = json_decode(json_encode($cats)); // changing ary to object
         $sub_cats = json_decode(json_encode($sub_cats));
     // beautify($cats);
-        view("admin/category/create", compact('cats', 'pages', 'sub_cats', 'sub_pages'));
+        view("admin/category/create", compact("cats", "ages", "sub_cats", "sub_pages"));
     }
 
     public function store(){
@@ -52,7 +52,7 @@ class CategoryController extends BaseController
             list($cats, $pages) = paginate(3,$categories, new Category());
             $cats = json_decode(json_encode($cats)); // changing ary to object
             // beautify($cats);
-            view("admin/category/create", compact('cats','errors', 'pages'));
+            view("admin/category/create", compact("cats","errors", "pages"));
         }else{
           $slug =  slug($post->name);
 
@@ -78,14 +78,14 @@ class CategoryController extends BaseController
                 list($cats, $pages) = paginate(3,$categories, new Category());
                 $cats = json_decode(json_encode($cats)); // changing ary to object
                 // beautify($cats);
-                view("admin/category/create", compact('cats','success', 'pages'));
+                view("admin/category/create", compact("cats", "success", "pages"));
             }else{
                 $errors = "Category Created Fail!";
                 $categories = Category::all()->count();
                 list($cats, $pages) = paginate(3,$categories, new Category());
                 $cats = json_decode(json_encode($cats)); // changing ary to object
                 // beautify($cats);
-                view("admin/category/create", compact('cats','errors', 'pages'));
+                view("admin/category/create", compact("cats","errors", "pages"));
             }
 
 

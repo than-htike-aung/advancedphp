@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ asset("images/logo.png>") }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     
 </head>
 <body>
@@ -17,6 +18,7 @@
 
   
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     @yield('script')
 </body>
 </html>

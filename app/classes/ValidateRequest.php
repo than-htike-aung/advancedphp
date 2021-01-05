@@ -9,7 +9,7 @@ class ValidateRequest{
      * $policy // table
      */
 
-   // private $errors = [];
+   private $errors = [];
      private $error_messages = [
          "unique" => "The :attribute field is already in use!",
          "required" => "The :attribute field must be filled!",
@@ -20,15 +20,15 @@ class ValidateRequest{
          "number" => "The :attribute field can only fill number values",
          "mixed" => "The :attribute field only accept A-Za-z0-9\.$@ characters"
      ];
-     private $errors = [];
+   //  private $errors = [];
 
      public function checkValidate($data, $policies){
         foreach($data as $column=>$value){
             if(in_array($column, array_keys($policies))){
                 $this->doValidation([
-                    'column' => $column,
-                    'value' => $value,
-                    'policies' => $policies[$column]
+                    "column" => $column,
+                    "value" => $value,
+                    "policies" => $policies[$column]
                 ]);
             }
         }

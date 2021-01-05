@@ -5,9 +5,9 @@ class Request {
    
     public static function all($is_array = false){
         $result = [];
-        if(count($_GET)>0) $result['get'] = $_GET;
-        if(count($_POST)>0) $result['post'] = $_POST;
-        $result['file'] = $_FILES;
+        if(count($_GET)>0) $result["get"] = $_GET;
+        if(count($_POST)>0) $result["post"] = $_POST;
+        $result["file"] = $_FILES;
 
         return json_decode(json_encode($result), $is_array);
 
@@ -18,7 +18,7 @@ class Request {
     }
 
     public static function has($key){
-        return array_key_exists($key, self::all(true)) ? true : false;
+        return array_key_exists($key, self::all(true));
     }
 
     public static function old($key, $value){

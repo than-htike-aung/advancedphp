@@ -4,17 +4,7 @@
 
 @section('content')
 
-<style>
-    .pagination > li {
-        padding: 5px 15px;
-        background: #ddd;
-        color: #000;
-        margin-right: 1px;
-    }
-    #edit-cat{
-        cursor: pointer;
-    }
-</style>
+
 
 {{-- <img src="{{ asset("images/coder.jpg") }}" alt=""> --}}
 
@@ -238,8 +228,8 @@
    //  console.log('Name is ' + name + '<br> Token is ' + token + 'id is ' + id);
      
      $.ajax({
-      type: 'POST',
-      url: '/admin/category/'+id+'/update',
+      type: "POST",
+      url: "/admin/category/'+id+'/update",
       data:{
         name:$name,
         token:token,
@@ -251,7 +241,7 @@
           window.location.href="/admin/category/create";
       },
       error: function (response){
-     console.log('response');
+     console.log("response");
           let str = "";
        let resp = (JSON.parse(response.responseText));
 

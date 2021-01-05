@@ -7,6 +7,7 @@
     <title><?php echo $__env->yieldContent('title'); ?></title>
     <link rel="shortcut icon" href="<?php echo e(asset("images/logo.png>")); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/custom.css')); ?>">
     
 </head>
 <body>
@@ -17,6 +18,7 @@
 
   
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/custom.js')); ?>"></script>
     <?php echo $__env->yieldContent('script'); ?>
 </body>
 </html>
