@@ -15,9 +15,13 @@
         "altorouter/altorouter": "2.0.1",
         "philo/laravel-blade": "3.1",
         "phpmailer/phpmailer": "6.0",
-        "filp/whoops": "2.2",
-        "nesbot/carbon": "1.25.3",
-        "voku/pagination": "3.0"
 
+        "nesbot/carbon": "1.25.3",
+        "voku/pagination": "3.0",
+        "stripe/stripe-php": "^7.67"
+
+    },
+    "require-dev": {
+        "filp/whoops": "2.2"
     }
 }

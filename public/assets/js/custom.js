@@ -37,14 +37,28 @@
         }
 
         function getCartItem(){
-            let ary = JSON.parse(localStorage.getItem('items'));
+            let ary = JSON.parse(localStorage.getItem("items"));
             return ary;
            //console.log(ary);
           
         }
 
+        function deleteItem(id) {
+            var ary = JSON.parse(localStorage.getItem("items"));
+            if(ary != null){
+                ary.forEach((item)=>{
+                    if(item == id){
+                        var ind = ary.indexOf(item);
+                        ary.splice(ind,1);
+                    }
+                })
+            }
+            localStorage.setItem("item", JSON.stringify(ary));
+            showCartItem();
+        }
+
         function clearCart(){
-            localStorage.removeItem('items');
+            localStorage.removeItem("items");
         }
 
         showCartItem();

@@ -26,13 +26,24 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle english text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                  <?php if(\App\classes\Auth::check()): ?>
+                      <?php echo e(\App\classes\Auth::user()->name); ?>
+
+                  <?php else: ?>
+                      Member
+                  <?php endif; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item english text-white" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                  <?php if(\App\classes\Auth::check()): ?>
+                      <a class="dropdown-item english" href="/user/logout">Logout</a>
+                  <?php else: ?>
+                      <a class="dropdown-item english" href="/user/login">Login</a>
+                      <a class="dropdown-item english" href="/user/register">Register</a>
+                  <?php endif; ?>
+
+
+
+
               </div>
             </li>
             

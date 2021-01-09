@@ -18,9 +18,9 @@
                 </div> 
                 <div class="card-footer">
                     <div class="row justify-content-between">
-                        <button class="btn btn-info btn-sm">
+                        <a href="/product/{{$product->id}}/detail" class="btn btn-info btn-sm">
                             <i class="fa fa-eye"></i>
-                          </button> 
+                          </a>
                           <span>${{ $product->price }}</span>
                           <button class="btn btn-info btn-sm" onclick="addToCart('{{$product->id}}')">
                               <i class="fa fa-shopping-cart"></i>
@@ -47,9 +47,9 @@
                 </div> 
                 <div class="card-footer">
                     <div class="row justify-content-between">
-                        <button class="btn btn-info btn-sm">
+                        <a href="/product/{{$product->id}}/detail" class="btn btn-info btn-sm">
                             <i class="fa fa-eye"></i>
-                          </button> 
+                        </a>
                           <span>${{ $product->price }}</span>
                           <button class="btn btn-info btn-sm" onclick="addToCart('{{$product->id}}')">
                               <i class="fa fa-shopping-cart"></i>
